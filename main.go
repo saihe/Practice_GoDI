@@ -5,6 +5,7 @@ import (
 	"practice_godi/google"
 	"practice_godi/manual"
 	"practice_godi/service"
+	"practice_godi/servicelocator"
 
 	"go.uber.org/dig"
 )
@@ -29,4 +30,8 @@ func main() {
 	digContainer.Invoke(func(task batch.Task) {
 		task.Execute("Raksul dig 使用")
 	})
+
+	// With Serivce Locator
+	b3 := servicelocator.Container["task"].(batch.Task)
+	b3.Execute("サービスロケーターパターンで実装")
 }
